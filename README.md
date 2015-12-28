@@ -12,8 +12,8 @@
 ```
 curl http://www.arleneslivekaraoke.com/images/songlist-7-15.jpg > book.jpg
 convert book.jpg -colorspace Gray -depth 1 ocr.jpg
-node index.js p1.jpg | grep -v '^$' > by-title.txt
+node index.js ocr.jpg | grep -v '^$' > by-title.txt
 
 # by artist
-awk -F ' - ' '{ print $NF, "-", $0 }' songs.txt | sort -n -k1 | awk -F ' - ' '{ print $1, "-", $2 }' > by-artist.txt
+awk -F ' - ' '{ print $NF, "-", $0 }' by-title.txt | sort -n -k1 | awk -F ' - ' '{ print $1, "-", $2 }' > by-artist.txt
 ```
